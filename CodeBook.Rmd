@@ -1,0 +1,238 @@
+---
+title: CodeBook
+author: Dom Burneikis
+date: February 18, 2015
+output: html_document
+---
+# The Data
+
+Raw data was obtained from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip. The data represents experiments that were carried out with a group of 30 volunteers, aged 19-48 years. Each person performed six activities (WALKING, WALKING UPSTAIRS, WALKING DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. 3-axial linear acceleration and 3-axial angular velocity were recorded during these activities by the embedded accelerometer and gyroscope on the device. More information on the original dataset can be found [here](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
+
+# Data Transformation
+
+Raw data was unzipped from the provided file. The training set and the test set were combined to produce one full data set representing all 561 variables included in the raw data. Variables were assigned appropriate variable names and only variables representing the mean and standard deviation of each measurement were selected. A tidy data set was produced from the full data set which included the **average value** of each variable measured for each volunteer, by each activity performed. This tidy data set was stored in tidyData.txt. Each variable included in this data set is described below.
+
+# Variables
+##Notation
+The variable selected for this data set come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ from a Samsung Galaxy S II smartphone.. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+Individual measurements were normalized to the mean and thus range -1 to 1. This data set contains the average of each variable by volunteer and activity performed.
+
+##Variable Definitions
+
+subject   
+  Volunteer identifier   
+    1..30   
+activity   
+  Activity performed   
+    LAYING   
+    SITTING   
+    STANDING   
+    WALKING   
+    WALKING_DOWNSTAIRS   
+    WALKING_UPSTAIRS   
+tBodyAccMeanX   
+  Average normalized mean of body acceleration time domain signal for x-axis   
+    -1..1   
+tBodyAccMeanY   
+  Average normalized mean of body acceleration time domain signal for y-axis   
+    -1..1   
+tBodyAccMeanZ   
+  Average normalized mean of body acceleration time domain signal for z-axis   
+    -1..1   
+tBodyAccStdX   
+  Average normalized standard deviation of body acceleration time domain signal for x-axis   
+    -1..1   
+tBodyAccStdY   
+  Average normalized standard deviation of body acceleration time domain signal for y-axis   
+    -1..1   
+tBodyAccStdZ   
+  Average normalized standard deviation of body acceleration time domain signal for z-axis   
+    -1..1   
+tGravityAccMeanX   
+  Average normalized mean of gravity acceleration time domain signal for x-axis   
+    -1..1   
+tGravityAccMeanY   
+  Average normalized mean of gravity acceleration time domain signal for y-axis   
+    -1..1   
+tGravityAccMeanZ   
+  Average normalized mean of gravity acceleration time domain signal for z-axis   
+    -1..1   
+tGravityAccStdX   
+  Average normalized standard deviation of gravity acceleration time domain signal for x-axis   
+    -1..1   
+tGravityAccStdY   
+  Average normalized standard deviation of gravity acceleration time domain signal for y-axis   
+    -1..1   
+tGravityAccStdZ   
+  Average normalized standard deviation of gravity acceleration time domain signal for z-axis   
+    -1..1   
+tBodyAccJerkMeanX   
+  Average normalized mean of body linear acceleration for x-axis   
+    -1..1   
+tBodyAccJerkMeanY   
+  Average normalized mean of body linear acceleration for y-axis   
+    -1..1   
+tBodyAccJerkMeanZ   
+  Average normalized mean of body linear acceleration for y-axis   
+    -1..1   
+tBodyAccJerkStdX   
+  Average normalized standard deviation of body linear acceleration for x-axis   
+    -1..1   
+tBodyAccJerkStdY   
+  Average normalized standard deviation of body linear acceleration for y-axis   
+    -1..1   
+tBodyAccJerkStdZ   
+  Average normalized standard deviation of body linear acceleration for z-axis   
+    -1..1   
+tBodyGyroMeanX   
+  Average normalized mean of body gyroscope time domain signal for x-axis   
+    -1..1   
+tBodyGyroMeanY   
+  Average normalized mean of body gyroscope time domain signal for y-axis   
+    -1..1   
+tBodyGyroMeanZ   
+  Average normalized mean of body gyroscope time domain signal for z-axis   
+    -1..1   
+tBodyGyroStdX   
+  Average normalized standard deviation of body gyroscope time domain signal for x-axis   
+    -1..1   
+tBodyGyroStdY   
+  Average normalized standard deviation of body gyroscope time domain signal for y-axis   
+    -1..1   
+tBodyGyroStdZ   
+  Average normalized standard deviation of body gyroscope time domain signal for z-axis   
+    -1..1   
+tBodyGyroJerkMeanX   
+  Average normalized mean of body angular velocity for x-axis    
+    -1..1   
+tBodyGyroJerkMeanY   
+  Average normalized mean of body angular velocity for y-axis   
+    -1..1   
+tBodyGyroJerkMeanZ   
+  Average normalized mean of body angular velocity for z-axis   
+    -1..1   
+tBodyGyroJerkStdX   
+  Average normalized standard deviation of body angular velocity for x-axis   
+    -1..1   
+tBodyGyroJerkStdY   
+  Average normalized standard deviation of body angular velocity for y-axis   
+    -1..1   
+tBodyGyroJerkStdZ   
+  Average normalized standard deviation of body angular velocity for z-axis   
+    -1..1   
+tBodyAccMagMean   
+  Average normalized mean of magnitude of body acceleration time domain signal   
+    -1..1   
+tBodyAccMagStd   
+  Average normalized standard deviation of magnitude of body acceleration time domain signal   
+    -1..1    
+tGravityAccMagMean   
+  Average normalized mean of magnitude of gravity acceleration time domain signal    
+    -1..1   
+tGravityAccMagStd   
+  Average normalized standard deviation of magnitude of gravity acceleration time domain signal   
+    -1..1   
+tBodyAccJerkMagMean   
+  Average normalized mean of magnitude of body linear acceleration    
+    -1..1    
+tBodyAccJerkMagStd   
+  Average normalized standard deviation of magnitude of body linear acceleration   
+    -1..1   
+tBodyGyroMagMean    
+  Average normalized mean of magnitude of body gyroscope time domain signal   
+    -1..1   
+tBodyGyroMagStd    
+  Average normalized standard deviation of magnitude of body gyroscope time domain signal    
+    -1..1   
+tBodyGyroJerkMagMean   
+  Average normalized mean of magnitude of body angular velocity    
+    -1..1   
+tBodyGyroJerkMagStd   
+  Average normalized standard deviation of magnitude of body angular velocity   
+    -1..1   
+fBodyAccMeanX   
+  Average normalized mean of body acceleration frequency domain signal for x-axis   
+    -1..1   
+fBodyAccMeanY   
+  Average normalized mean of body acceleration frequency domain signal for y-axis    
+    -1..1   
+fBodyAccMeanZ   
+  Average normalized mean of body acceleration frequency domain signal for z-axis   
+    -1..1   
+fBodyAccStdX   
+  Average normalized standard deviation of body acceleration frequency domain signal for x-axis   
+    -1..1   
+fBodyAccStdY   
+  Average normalized standard deviation of body acceleration frequency domain signal for y-axis    
+    -1..1   
+fBodyAccStdZ   
+  Average normalized standard deviation of body acceleration frequency domain signal for z-axis   
+    -1..1   
+fBodyAccJerkMeanX   
+  Average normalized mean of body linear acceleration frequency domain signal for x-axis    
+    -1..1   
+fBodyAccJerkMeanY   
+  Average normalized mean of body linear acceleration frequency domain signal for y-axis   
+    -1..1   
+fBodyAccJerkMeanZ   
+  Average normalized mean of body linear acceleration frequency domain signal for z-axis   
+    -1..1   
+fBodyAccJerkStdX   
+  Average normalized standard deviation of body linear acceleration frequency domain signal for x-axis   
+    -1..1   
+fBodyAccJerkStdY   
+  Average normalized standard deviation of body linear acceleration frequency domain signal for y-axis   
+    -1..1   
+fBodyAccJerkStdZ   
+  Average normalized standard deviation of body linear acceleration frequency domain signal for z-axis   
+    -1..1   
+fBodyGyroMeanX   
+  Average normalized mean of body gyroscope frequency domain signal for x-axis    
+    -1..1   
+fBodyGyroMeanY    
+  Average normalized mean of body gyroscope frequency domain signal for y-axis    
+    -1..1    
+fBodyGyroMeanZ     
+  Average normalized mean of body gyroscope frequency domain signal for z-axis   
+    -1..1   
+fBodyGyroStdX   
+  Average normalized standard deviation of body gyroscope frequency domain signal for x-axis   
+    -1..1   
+fBodyGyroStdY   
+  Average normalized standard deviation of body gyroscope frequency domain signal for y-axis    
+    -1..1   
+fBodyGyroStdZ   
+  Average normalized standard deviation of body gyroscope frequency domain signal for z-axis   
+    -1..1   
+fBodyAccMagMean   
+  Average normalized mean of magnitude of body acceleration frequency domain signal   
+    -1..1   
+fBodyAccMagStd   
+  Average normalized standard deviation of magnitude of body acceleration frequency domain signal   
+    -1..1   
+fBodyBodyAccJerkMagMean   
+  Average normalized mean of magnitude of body linear acceleration frequency domain signal   
+    -1..1   
+fBodyBodyAccJerkMagStd   
+  Average normalized standard deviation of magnitude of body linear acceleration frequency domain signal   
+    -1..1   
+fBodyBodyGyroMagMean   
+  Average normalized mean of magnitude of body gyroscope frequency domain signal   
+    -1..1    
+fBodyBodyGyroMagStd   
+  Average normalized standard deviation of magnitude of body gyroscope frequency domain signal   
+    -1..1   
+fBodyBodyGyroJerkMagMean   
+  Average normalized mean of magnitude of body angular velocity frequency domain signal    
+    -1..1   
+fBodyBodyGyroJerkMagStd   
+  Average normalized standard deviation of magnitude of body angular velocity frequency domain signal    
+    -1..1   

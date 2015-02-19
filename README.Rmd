@@ -1,0 +1,50 @@
+---
+title: "README"
+author: "Dom Burneikis"
+date: "February 18, 2015"
+output: html_document
+---
+
+The raw dataset was processed using R statistical software version 3.1.2 (2014-10-31). Scripts used for data processing are included in "run_analysis.R" file. The procedure for performing the data transformation is described below.
+
+##Download and Unzip Raw Data
+
+Data was downloaded from http://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip on 2015-02-11. The download file was unzipped to extract the raw data files contained within.
+
+##Read Files into R
+
+The following files were read into R software using `read.table()` function 
+
+- **activity_labels.txt**   
+- **features.txt**   
+- **X_train.txt**  
+- **y_train.txt**   
+- **subject_train.txt**   
+- **X_test.txt**   
+- **y_test.txt**   
+- **subject_test.txt**   
+
+##Label and Merge Training and Test Sets
+
+Names for the variables in both Training and Test sets were taken from the table extracted from features.txt file and applied across both data sets. Columns for "subject" and "activity" were added to both data sets using the tables extracted from their respective files. Activity index numbers were then replaces with proper activity names taken from the activity labels table. Following these labeling transformations, the training and the test set were combined using the `rbind()` function to make one complete data set. The complete set included 10299 observations of 563 variables.
+
+##Subset Data on Means and Standard Deviations for Each Measurement
+
+An index to isolate only the variables with names containing "mean()" and "std()" was created using the`grep()` function. This index was applied to the combined data set using the `select()` function from the dplyr package to extract only the data on variables reporting means and standard deviations of individual measurements. This select data set included 10299 observations of 68 variables, including "subject" and "activity".
+
+##Group the Data by Subject and Activity Create 
+
+`group_by()` function was applied to internally organize this select data set acording to subject and activity performed. ```grouped <- group_by(full_set3, subject, activity)```
+
+##Create a Tidy Data Set With Average of Each Variable for Each Subject and Activity
+
+The `summarise_each()` function was applied to the grouped data set to obtain the average of each variable for each subject and activity. The resultant data set contained 180 observations of 68 variables. Each row in this tidy data set was representative of one of six activities performed by one of thirty volunteers.
+
+##Clean-up Variable Names
+
+The remaining 68 variable names in the tidy data set were parsed with a sequence of `gsub()` functions to remove redundant and confusing punctuation marks such as "-" and "()". Capitalization across variable names was also adjusted to maintain consistency.
+
+##Create a Text File Containing Tidy Data
+
+Finally, the resultant tidy data set was stored in tidyData.txt file inside the working directory using `write.table()` function.
+```write.table(summary, file="tidyData.txt", row.name=FALSE)```
